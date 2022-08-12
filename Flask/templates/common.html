@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title {% endblock %} </title>
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap/bootstrap4.6.min.css')}}">
+  <link rel="stylesheet" href="url_for('static',filename='css/init.css)">
+  <style>
+    .footer{font-size:12px;text-align:center;height:20px;}
+  </style>
+</head>
+<body>
+   {% block header %}
+   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+       <div class="container">
+           <a class="navbar-brand" href="/">车牌识别</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/community">社区 <span class="sr-only">(current)</span></a>
+      </li>
+        <li calss="nav-item ml-2">
+            <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+        </li>
+    </ul>
+      <ul class="navbar-nav mr-auto">
+          {% if session['username']!='' %}
+          <li class="nav-item active">
+              <a class="nav-link" href="/users">{{ session['username']}}<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="/logout">注销<span class="sr-only">(current)</span></a>
+          </li>
+          {% else %}
+          <li class="nav-item active">
+              <a class="nav-link" href="/login">登录<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="/enroll">注册<span class="sr-only">(current)</span></a>
+          </li>
+          {% endif %}
+    </ul>
+
+  </div>
+
+       </div>
+</nav>
+   {% endblock %}
+   {% block container %}
+
+   {% endblock %}
+   {% block footer %}
+   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+       <div class="container">
+            <p style="color: white" class="text-center">Made by Nankai University 中软实训2022年8月05组 组长：蒋婉婷 组员：罗钦译 张欣怡 联系方式：123456  地址：天津市滨海新区宏达街泰达校区<p/>
+       </div>
+   </nav>
+   {% endblock %}
+</body>
+</html>
