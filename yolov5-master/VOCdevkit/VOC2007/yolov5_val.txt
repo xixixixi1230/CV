@@ -1,8 +1,0 @@
-F:\Workplace\pycharmProject\Yolov5\split_train_val\VOCdevkit/VOC2007/JPEGImages/00625-90_268-297&476_441&519-441&519_297&517_298&478_441&476-0_0_3_24_31_32_30_28-108-57.jpg
-F:\Workplace\pycharmProject\Yolov5\split_train_val\VOCdevkit/VOC2007/JPEGImages/0075-88_267-277&482_421&535-421&527_280&535_277&490_417&482-0_0_3_25_33_32_32_33-178-115.jpg
-F:\Workplace\pycharmProject\Yolov5\split_train_val\VOCdevkit/VOC2007/JPEGImages/0125-91_262-278&426_470&492-470&492_284&484_278&426_469&431-0_0_3_24_30_30_26_26-98-69.jpg
-F:\Workplace\pycharmProject\Yolov5\split_train_val\VOCdevkit/VOC2007/JPEGImages/015-91_91-282&460_498&530-496&530_282&526_282&460_498&466-0_0_3_27_29_25_30_33-149-96.jpg
-F:\Workplace\pycharmProject\Yolov5\split_train_val\VOCdevkit/VOC2007/JPEGImages/02625-90_267-213&379_501&471-501&467_216&471_213&379_496&379-0_0_3_24_31_27_33_24-137-256.jpg
-F:\Workplace\pycharmProject\Yolov5\split_train_val\VOCdevkit/VOC2007/JPEGImages/06375-90_269-71&447_530&587-521&581_72&587_71&447_530&448-0_0_5_24_31_24_24_24-127-155.jpg
-F:\Workplace\pycharmProject\Yolov5\split_train_val\VOCdevkit/VOC2007/JPEGImages/301-87_99-293&464_437&534-432&524_293&534_306&469_437&464-0_0_3_24_24_25_32_32-64-11.jpg
-F:\Workplace\pycharmProject\Yolov5\split_train_val\VOCdevkit/VOC2007/JPEGImages/305-90_99-135&398_615&503-601&503_161&501_135&400_615&398-0_0_3_24_30_31_32_25-136-65.jpg
