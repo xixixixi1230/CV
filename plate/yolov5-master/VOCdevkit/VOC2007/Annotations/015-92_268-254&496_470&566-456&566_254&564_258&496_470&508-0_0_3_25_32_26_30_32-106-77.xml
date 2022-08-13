@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<annotation>
+		<folder>driving_annotation_dataset</folder>
+		<filename>015-92_268-254&amp;496_470&amp;566-456&amp;566_254&amp;564_258&amp;496_470&amp;508-0_0_3_25_32_26_30_32-106-77.jpg</filename>
+		<size>
+			<width>720</width>
+			<height>1160</height>
+			<depth>3</depth>
+		</size>
+		<object>
+			<name>plate</name>
+			<pose>Unspecified</pose>
+			<truncated>0</truncated>
+			<difficult>0</difficult>
+			<bndbox>
+				<xmin>259</xmin>
+				<ymin>495</ymin>
+				<xmax>464</xmax>
+				<ymax>571</ymax>
+			</bndbox>
+		</object>
+	</annotation>
