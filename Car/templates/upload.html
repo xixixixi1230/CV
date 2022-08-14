@@ -1,0 +1,36 @@
+{% extends 'common.html'%}
+{% block title %}车牌识别-识别车牌 {% endblock %}
+{% block container %}
+<style>
+    .test{
+        width: 1200px;
+        height: 500px;
+			margin: 10px auto;
+			display: flex;
+    }
+    .testIMG {
+        display: flex;
+        margin-top: 0;
+        margin-left: 5px;
+        width: 900px;
+        height: 500px;
+    }
+</style>
+{% if True %}
+<div class="test">
+  <div class="testIMG">
+    <img src="./static/img/upload/wait.jpg">
+  </div>
+  <div >
+    <p>检测结果</p>
+  </div>
+</div>
+{% endif %}
+<div>
+  <form action="/uploader" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" id="fileField"/>
+  <input type="submit" value="提交"/>
+</form>
+</div>
+
+{% endblock %}

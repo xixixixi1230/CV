@@ -1,0 +1,43 @@
+{% extends 'common.html'%}
+{% block title %}车牌识别-收费细则 {% endblock %}
+{% block container %}
+<h2 align="center">停车场收费细则</h2>
+<div class="col"></div>
+<div class="col">
+  <h4 align="center">通　　知</h4>
+  <p>尊敬的各位车友：</p>
+  <p>六神无组商场地下停车场定于2022年8月1日调整地下停车场收费标准。调整收费标准如下：</p>
+  <p>1.停车不超过15分钟（含15分钟）不需要停车费。</p>
+  <p>2.停车不满一个小时按一个小时计算。</p>
+  <p>3.夜间停车上限10元/辆。</p>
+  <p>4.支付停车费后，请在15分钟内离开停车场，否则将重新计费。</p>
+  <p>5.在商场或者餐厅消费后，请通过小票向服务人员领取停车票。</p>
+  <table class="table table-striped" style="margin:auto;">
+    <thead>
+    <tr>
+      <th scope="col">消费情况\时间</th>
+      <th scope="col">白天（8：00-20：00）</th>
+      <th scope="col">晚上（20：00-8：00）</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">无消费</th>
+      <td>3元/小时.辆</td>
+      <td>1.5元/小时.辆</td>
+    </tr>
+    <tr>
+      <th scope="row">商场消费满50元</th>
+      <td>免一小时车费</td>
+      <td>免一小时车费</td>
+    </tr>
+    <tr>
+      <th scope="row">餐厅消费</th>
+      <td>免二小时车费</td>
+      <td>免二小时车费</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col"></div>
+{% endblock %}
