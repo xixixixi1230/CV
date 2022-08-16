@@ -2,35 +2,38 @@
 {% block title %}车牌识别-识别车牌 {% endblock %}
 {% block container %}
 <style>
-    .test{
+    .test {
         width: 1200px;
         height: 500px;
-			margin: 10px auto;
-			display: flex;
+        margin: 20px auto;
+        display: flex;
     }
+
     .testIMG {
         display: flex;
         margin-top: 0;
-        margin-left: 5px;
-        width: 900px;
+        margin-left: 70px;
+        width: 800px;
         height: 500px;
+        background-size: 100%;
+        background: url(../static/img/upload/wait.png);
     }
 </style>
-{% if True %}
 <div class="test">
-  <div class="testIMG">
-    <img src="./static/img/upload/wait.jpg">
+  <div class="testIMG" >
+    <img id="show_img" src={{file_path}} style="width: 100%;min-height: 100%;">
   </div>
-  <div >
-    <p>检测结果</p>
+  <div style="background-color: lightgray; width: 250px">
+    <h4>检测结果:</h4>
+    <span id="clock">当前时间：{{time}}</span>
+    <p>停车时间：{{parking}}</p>
+    <p>停车位置：{{site}}</p>
   </div>
 </div>
-{% endif %}
-<div>
+<div style=" margin-left: 120px;">
   <form action="/uploader" method="POST" enctype="multipart/form-data">
   <input type="file" name="file" id="fileField"/>
   <input type="submit" value="提交"/>
-</form>
+  </form>
 </div>
-
 {% endblock %}
