@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages</folder>
+	<filename>0325-80_93-276&amp;452_521&amp;574-526&amp;535_292&amp;580_277&amp;483_511&amp;438-10_0_27_33_1_33_33-165-82.jpg</filename>
+	<path>D:\Desktop\CCPD2020\VOCdevkit\VOC2007\JPEGImages\0325-80_93-276&amp;452_521&amp;574-526&amp;535_292&amp;580_277&amp;483_511&amp;438-10_0_27_33_1_33_33-165-82.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>720</width>
+		<height>1160</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>plate</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>250</xmin>
+			<ymin>429</ymin>
+			<xmax>530</xmax>
+			<ymax>600</ymax>
+		</bndbox>
+	</object>
+</annotation>
