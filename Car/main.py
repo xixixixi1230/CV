@@ -1,3 +1,4 @@
+import datetime
 import os
 import time
 import random
@@ -22,8 +23,8 @@ def uploader():
     if request.method == 'POST':
         f = request.files['file']
         file_path = "./static/img/upload/" + str(f.filename)
-        clock = time.asctime()
-        parking = "--"
+        clock = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+        park_time = "--"
         # 把用户名和密码注册到数据库中
         # 连接数据库,此前在数据库中创建数据库
         db = pymysql.connect(host="localhost", user="root", password="qwertyjwt11", database="car_flask")
@@ -41,10 +42,26 @@ def uploader():
             cursor.execute(sql1)
             results = cursor.fetchall()
             if len(results) == 1:
-                parking = str(results[0][0]) + "-" + str(clock)
+                in_time = datetime.datetime.strptime(results[0][0], '%Y-%m-%d %H:%M:%S')
+                out_time=datetime.datetime.strptime(clock, '%Y-%m-%d %H:%M:%S')
+                park_time=out_time-in_time
+                fifteenmin = datetime.timedelta(minutes=15)
+                onehour=datetime.timedelta(hours=1)
+                if fifteenmin >= park_time :
+                    fee=0
+                elif fifteenmin< park_time<=onehour:
+                    fee=3
+                else:
+                    i=2
+                    while park_time>datetime.timedelta(hours=i):
+                        i=i+1
+                    fee=3*i
                 cursor.execute(sql3)
                 db.commit()
-                return render_template("upload.html", time=clock, parking=parking, file_path=file_path)
+                if fee>20:
+                    fee=20
+                fee=str(fee)+'元'
+                return render_template("upload.html", time=clock, parking=park_time, file_path=file_path,fee=fee)
             else:
                 cursor.execute(sql5)
                 number = cursor.fetchall()
@@ -78,7 +95,7 @@ def uploader():
                 else:
                     site='车位已满'
 
-                return render_template("upload.html", time=clock, parking=parking, file_path=file_path, site=site)
+                return render_template("upload.html", time=clock, parking=park_time, file_path=file_path, site=site)
         except:
             # 抛出错误信息
             traceback.print_exc()
@@ -236,7 +253,7 @@ def parkypage():
     # 使用cursor()方法获取操作游标
     cursor = db.cursor()
     # SQL 插入语句
-    sql1 = "select driveway from plate;"
+    sql1 = "select driveway,in_time from plate;"
     try:
         # 执行sql语句
         cursor.execute(sql1)
@@ -324,165 +341,165 @@ def parkypage():
         session['80'] = 0
         for i in results:
             if i[0] == 1:
-                session['1'] = 1
+                session['1'] = i[1]
             elif i[0] == 2:
-                session['2'] = 1
+                session['2'] = i[1]
             elif i[0] == 3:
-                session['3'] = 1
+                session['3'] = i[1]
             elif i[0] == 4:
-                session['4'] = 1
+                session['4'] = i[1]
             elif i[0] == 5:
-                session['5'] = 1
+                session['5'] = i[1]
             elif i[0] == 6:
-                session['6'] = 1
+                session['6'] = i[1]
             elif i[0] == 7:
-                session['7'] = 1
+                session['7'] = i[1]
             elif i[0] == 8:
-                session['8'] = 1
+                session['8'] = i[1]
             elif i[0] == 9:
-                session['9'] = 1
+                session['9'] = i[1]
             elif i[0] == 10:
-                session['10'] = 1
+                session['10'] = i[1]
             elif i[0] == 11:
-                session['11'] = 1
+                session['11'] = i[1]
             elif i[0] == 12:
-                session['12'] = 1
+                session['12'] = i[1]
             elif i[0] == 13:
-                session['13'] = 1
+                session['13'] = i[1]
             elif i[0] == 14:
-                session['14'] = 1
+                session['14'] = i[1]
             elif i[0] == 15:
-                session['15'] = 1
+                session['15'] = i[1]
             elif i[0] == 16:
-                session['16'] = 1
+                session['16'] = i[1]
             elif i[0] == 17:
-                session['17'] = 1
+                session['17'] = i[1]
             elif i[0] == 18:
-                session['18'] = 1
+                session['18'] = i[1]
             elif i[0] == 19:
-                session['19'] = 1
+                session['19'] = i[1]
             elif i[0] == 20:
-                session['20'] = 1
+                session['20'] = i[1]
             elif i[0] == 21:
-                session['21'] = 1
+                session['21'] = i[1]
             elif i[0] == 22:
-                session['22'] = 1
+                session['22'] = i[1]
             elif i[0] == 23:
-                session['23'] = 1
+                session['23'] = i[1]
             elif i[0] == 24:
-                session['24'] = 1
+                session['24'] = i[1]
             elif i[0] == 25:
-                session['25'] = 1
+                session['25'] = i[1]
             elif i[0] == 26:
-                session['26'] = 1
+                session['26'] = i[1]
             elif i[0] == 27:
-                session['27'] = 1
+                session['27'] = i[1]
             elif i[0] == 28:
-                session['28'] = 1
+                session['28'] = i[1]
             elif i[0] == 29:
-                session['29'] = 1
+                session['29'] = i[1]
             elif i[0] == 30:
-                session['30'] = 1
+                session['30'] = i[1]
             elif i[0] == 31:
-                session['31'] = 1
+                session['31'] = i[1]
             elif i[0] == 32:
-                session['32'] = 1
+                session['32'] = i[1]
             elif i[0] == 33:
-                session['33'] = 1
+                session['33'] = i[1]
             elif i[0] == 34:
-                session['34'] = 1
+                session['34'] = i[1]
             elif i[0] == 35:
-                session['35'] = 1
+                session['35'] = i[1]
             elif i[0] == 36:
-                session['36'] = 1
+                session['36'] = i[1]
             elif i[0] == 37:
-                session['37'] = 1
+                session['37'] = i[1]
             elif i[0] == 38:
-                session['38'] = 1
+                session['38'] = i[1]
             elif i[0] == 39:
-                session['39'] = 1
+                session['39'] = i[1]
             elif i[0] == 40:
-                session['40'] = 1
+                session['40'] = i[1]
             elif i[0] == 41:
-                session['41'] = 1
+                session['41'] = i[1]
             elif i[0] == 42:
-                session['42'] = 1
+                session['42'] = i[1]
             elif i[0] == 43:
-                session['43'] = 1
+                session['43'] = i[1]
             elif i[0] == 44:
-                session['44'] = 1
+                session['44'] = i[1]
             elif i[0] == 45:
-                session['45'] = 1
+                session['45'] = i[1]
             elif i[0] == 46:
-                session['46'] = 1
+                session['46'] = i[1]
             elif i[0] == 47:
-                session['47'] = 1
+                session['47'] = i[1]
             elif i[0] == 48:
-                session['48'] = 1
+                session['48'] = i[1]
             elif i[0] == 49:
-                session['49'] = 1
+                session['49'] = i[1]
             elif i[0] == 50:
-                session['50'] = 1
+                session['50'] = i[1]
             elif i[0] == 51:
-                session['51'] = 1
+                session['51'] = i[1]
             elif i[0] == 52:
-                session['52'] = 1
+                session['52'] = i[1]
             elif i[0] == 53:
-                session['53'] = 1
+                session['53'] = i[1]
             elif i[0] == 54:
-                session['54'] = 1
+                session['54'] = i[1]
             elif i[0] == 55:
-                session['55'] = 1
+                session['55'] = i[1]
             elif i[0] == 56:
-                session['56'] = 1
+                session['56'] = i[1]
             elif i[0] == 57:
-                session['57'] = 1
+                session['57'] = i[1]
             elif i[0] == 58:
-                session['58'] = 1
+                session['58'] = i[1]
             elif i[0] == 59:
-                session['59'] = 1
+                session['59'] = i[1]
             elif i[0] == 60:
-                session['60'] = 1
+                session['60'] = i[1]
             elif i[0] == 61:
-                session['61'] = 1
+                session['61'] = i[1]
             elif i[0] == 62:
-                session['62'] = 1
+                session['62'] = i[1]
             elif i[0] == 63:
-                session['63'] = 1
+                session['63'] = i[1]
             elif i[0] == 64:
-                session['64'] = 1
+                session['64'] = i[1]
             elif i[0] == 65:
-                session['65'] = 1
+                session['65'] = i[1]
             elif i[0] == 66:
-                session['66'] = 1
+                session['66'] = i[1]
             elif i[0] == 67:
-                session['67'] = 1
+                session['67'] = i[1]
             elif i[0] == 68:
-                session['68'] = 1
+                session['68'] = i[1]
             elif i[0] == 69:
-                session['69'] = 1
+                session['69'] = i[1]
             elif i[0] == 70:
-                session['70'] = 1
+                session['70'] = i[1]
             elif i[0] == 71:
-                session['71'] = 1
+                session['71'] = i[1]
             elif i[0] == 72:
-                session['72'] = 1
+                session['72'] = i[1]
             elif i[0] == 73:
-                session['73'] = 1
+                session['73'] = i[1]
             elif i[0] == 74:
-                session['74'] = 1
+                session['74'] = i[1]
             elif i[0] == 75:
-                session['75'] = 1
+                session['75'] = i[1]
             elif i[0] == 76:
-                session['76'] = 1
+                session['76'] = i[1]
             elif i[0] == 77:
-                session['77'] = 1
+                session['77'] = i[1]
             elif i[0] == 78:
-                session['78'] = 1
+                session['78'] = i[1]
             elif i[0] == 79:
-                session['79'] = 1
+                session['79'] = i[1]
             elif i[0] == 80:
-                session['80'] = 1
+                session['80'] = i[1]
         return render_template("park.html", number=number)
     except:
         # 如果发生错误则回滚
@@ -498,6 +515,10 @@ def fee_rulespage():
     return render_template("fee_rules.html")
 
 
+@app.route('/video')
+def videopage():
+    return render_template("video.html")
+
+
 if __name__ == "__main__":
-    print(app.url_map)
     app.run(debug=True)

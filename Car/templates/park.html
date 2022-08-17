@@ -17,428 +17,428 @@
         width: 124px;
         margin: 1px;
         float: left;
-        overflow: hidden;
         color: black;
     }
+
 </style>
 <h1 align="center">欢迎来到六神无组商场</h1>
 <h3>剩余车位：{{number}}</h3>
 <div id="container">
   <div>
-    {%if session['1']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A001</label></div>
+    {%if session['1']!=0 %}
+    <div class="back" title="进入时间：{{session['1']}}"><img src="../static/img/red.png"><label>A001</label></div>
     {% elif session['1']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A001</label></div>
     {%endif%}
-    {%if session['2']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A002</label></div>
+    {%if session['2']!=0 %}
+    <div class="back" title="进入时间：{{session['2']}}"><img src="../static/img/red.png"><label>A002</label></div>
     {% elif session['2']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A002</label></div>
     {%endif%}
-    {%if session['3']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A003</label></div>
+    {%if session['3']!=0 %}
+    <div class="back" title="进入时间：{{session['3']}}"><img src="../static/img/red.png"><label>A003</label></div>
     {% elif session['3']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A003</label></div>
     {%endif%}
-    {%if session['4']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A004</label></div>
+    {%if session['4']!=0 %}
+    <div class="back" title="进入时间：{{session['4']}}"><img src="../static/img/red.png"><label>A004</label></div>
     {% elif session['4']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A004</label></div>
     {%endif%}
-    {%if session['5']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A005</label></div>
+    {%if session['5']!=0 %}
+    <div class="back" title="进入时间：{{session['5']}}"><img src="../static/img/red.png"><label>A005</label></div>
     {% elif session['5']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A005</label></div>
     {%endif%}
-    {%if session['6']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A006</label></div>
+    {%if session['6']!=0 %}
+    <div class="back" title="进入时间：{{session['6']}}"><img src="../static/img/red.png"><label>A006</label></div>
     {% elif session['6']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A006</label></div>
     {%endif%}
-    {%if session['7']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A007</label></div>
+    {%if session['7']!=0 %}
+    <div class="back" title="进入时间：{{session['7']}}"><img src="../static/img/red.png"><label>A007</label></div>
     {% elif session['7']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A007</label></div>
     {%endif%}
-    {%if session['8']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A008</label></div>
+    {%if session['8']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A008</label></div>
     {% elif session['8']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A008</label></div>
     {%endif%}
-    {%if session['9']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A009</label></div>
+    {%if session['9']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A009</label></div>
     {% elif session['9']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A009</label></div>
     {%endif%}
-    {%if session['10']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A010</label></div>
+    {%if session['10']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A010</label></div>
     {% elif session['10']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A010</label></div>
     {%endif%}
   </div>
   <div>
-    {%if session['11']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A011</label></div>
+    {%if session['11']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A011</label></div>
     {% elif session['11']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A011</label></div>
     {%endif%}
-    {%if session['12']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A012</label></div>
+    {%if session['12']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A012</label></div>
     {% elif session['12']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A012</label></div>
     {%endif%}
-    {%if session['13']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A013</label></div>
+    {%if session['13']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A013</label></div>
     {% elif session['13']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A013</label></div>
     {%endif%}
-    {%if session['14']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A014</label></div>
+    {%if session['14']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A014</label></div>
     {% elif session['14']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A014</label></div>
     {%endif%}
-    {%if session['15']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A015</label></div>
+    {%if session['15']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A015</label></div>
     {% elif session['15']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A015</label></div>
     {%endif%}
-    {%if session['16']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A016</label></div>
+    {%if session['16']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A016</label></div>
     {% elif session['16']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A016</label></div>
     {%endif%}
-    {%if session['17']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A017</label></div>
+    {%if session['17']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A017</label></div>
     {% elif session['17']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A017</label></div>
     {%endif%}
-    {%if session['18']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A018</label></div>
+    {%if session['18']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A018</label></div>
     {% elif session['18']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A018</label></div>
     {%endif%}
-    {%if session['19']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A019</label></div>
+    {%if session['19']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A019</label></div>
     {% elif session['19']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A019</label></div>
     {%endif%}
-    {%if session['20']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>A020</label></div>
+    {%if session['20']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>A020</label></div>
     {% elif session['20']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>A020</label></div>
     {%endif%}
   </div>
   <div style="height: 20px;float:left;width: 100%"><p align="center">通道</p></div>
   <div>
-    {%if session['21']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B001</label></div>
+    {%if session['21']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B001</label></div>
     {% elif session['21']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B001</label></div>
     {%endif%}
-    {%if session['22']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B002</label></div>
+    {%if session['22']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B002</label></div>
     {% elif session['22']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B002</label></div>
     {%endif%}
-    {%if session['23']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B003</label></div>
+    {%if session['23']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B003</label></div>
     {% elif session['23']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B003</label></div>
     {%endif%}
-    {%if session['24']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B004</label></div>
+    {%if session['24']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B004</label></div>
     {% elif session['24']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B004</label></div>
     {%endif%}
-    {%if session['25']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B005</label></div>
+    {%if session['25']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B005</label></div>
     {% elif session['25']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B005</label></div>
     {%endif%}
-    {%if session['26']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B006</label></div>
+    {%if session['26']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B006</label></div>
     {% elif session['26']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B006</label></div>
     {%endif%}
-    {%if session['27']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B007</label></div>
+    {%if session['27']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B007</label></div>
     {% elif session['27']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B007</label></div>
     {%endif%}
-    {%if session['28']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B008</label></div>
+    {%if session['28']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B008</label></div>
     {% elif session['28']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B008</label></div>
     {%endif%}
-    {%if session['29']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B009</label></div>
+    {%if session['29']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B009</label></div>
     {% elif session['29']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B009</label></div>
     {%endif%}
-    {%if session['30']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B010</label></div>
+    {%if session['30']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B010</label></div>
     {% elif session['30']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B010</label></div>
     {%endif%}
   </div>
   <div>
-    {%if session['31']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B011</label></div>
+    {%if session['31']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B011</label></div>
     {% elif session['31']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B011</label></div>
     {%endif%}
-    {%if session['32']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B012</label></div>
+    {%if session['32']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B012</label></div>
     {% elif session['32']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B012</label></div>
     {%endif%}
-    {%if session['33']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B013</label></div>
+    {%if session['33']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B013</label></div>
     {% elif session['33']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B013</label></div>
     {%endif%}
-    {%if session['34']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B014</label></div>
+    {%if session['34']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B014</label></div>
     {% elif session['34']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B014</label></div>
     {%endif%}
-    {%if session['35']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B015</label></div>
+    {%if session['35']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B015</label></div>
     {% elif session['35']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B015</label></div>
     {%endif%}
-    {%if session['36']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B016</label></div>
+    {%if session['36']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B016</label></div>
     {% elif session['36']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B016</label></div>
     {%endif%}
-    {%if session['37']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B017</label></div>
+    {%if session['37']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B017</label></div>
     {% elif session['37']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B017</label></div>
     {%endif%}
-    {%if session['38']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B018</label></div>
+    {%if session['38']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B018</label></div>
     {% elif session['38']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B018</label></div>
     {%endif%}
-    {%if session['39']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B019</label></div>
+    {%if session['39']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B019</label></div>
     {% elif session['39']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B019</label></div>
     {%endif%}
-    {%if session['40']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>B020</label></div>
+    {%if session['40']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>B020</label></div>
     {% elif session['40']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>B020</label></div>
     {%endif%}
   </div>
   <div style="height: 20px;float:left;width: 100%"><p align="center">通道</p></div>
   <div>
-    {%if session['41']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C001</label></div>
+    {%if session['41']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C001</label></div>
     {% elif session['41']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C001</label></div>
     {%endif%}
-    {%if session['42']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C002</label></div>
+    {%if session['42']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C002</label></div>
     {% elif session['42']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C002</label></div>
     {%endif%}
-    {%if session['43']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C003</label></div>
+    {%if session['43']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C003</label></div>
     {% elif session['43']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C003</label></div>
     {%endif%}
-    {%if session['44']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C004</label></div>
+    {%if session['44']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C004</label></div>
     {% elif session['44']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C004</label></div>
     {%endif%}
-    {%if session['45']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C005</label></div>
+    {%if session['45']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C005</label></div>
     {% elif session['45']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C005</label></div>
     {%endif%}
-    {%if session['46']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C006</label></div>
+    {%if session['46']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C006</label></div>
     {% elif session['46']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C006</label></div>
     {%endif%}
-    {%if session['47']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C007</label></div>
+    {%if session['47']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C007</label></div>
     {% elif session['47']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C007</label></div>
     {%endif%}
-    {%if session['48']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C008</label></div>
+    {%if session['48']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C008</label></div>
     {% elif session['48']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C008</label></div>
     {%endif%}
-    {%if session['49']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C009</label></div>
+    {%if session['49']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C009</label></div>
     {% elif session['49']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C009</label></div>
     {%endif%}
-    {%if session['50']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C010</label></div>
+    {%if session['50']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C010</label></div>
     {% elif session['50']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C010</label></div>
     {%endif%}
   </div>
   <div>
-    {%if session['51']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C011</label></div>
+    {%if session['51']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C011</label></div>
     {% elif session['51']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C011</label></div>
     {%endif%}
-    {%if session['52']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C012</label></div>
+    {%if session['52']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C012</label></div>
     {% elif session['52']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C012</label></div>
     {%endif%}
-    {%if session['53']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C013</label></div>
+    {%if session['53']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C013</label></div>
     {% elif session['53']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C013</label></div>
     {%endif%}
-    {%if session['54']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C014</label></div>
+    {%if session['54']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C014</label></div>
     {% elif session['54']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C014</label></div>
     {%endif%}
-    {%if session['55']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C015</label></div>
+    {%if session['55']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C015</label></div>
     {% elif session['55']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C015</label></div>
     {%endif%}
-    {%if session['56']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C016</label></div>
+    {%if session['56']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C016</label></div>
     {% elif session['56']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C016</label></div>
     {%endif%}
-    {%if session['57']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C017</label></div>
+    {%if session['57']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C017</label></div>
     {% elif session['57']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C017</label></div>
     {%endif%}
-    {%if session['58']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C018</label></div>
+    {%if session['58']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C018</label></div>
     {% elif session['58']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C018</label></div>
     {%endif%}
-    {%if session['59']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C019</label></div>
+    {%if session['59']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C019</label></div>
     {% elif session['59']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C019</label></div>
     {%endif%}
-    {%if session['60']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>C020</label></div>
+    {%if session['60']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>C020</label></div>
     {% elif session['60']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>C020</label></div>
     {%endif%}
   </div>
   <div style="height: 20px;float:left;width: 100%"><p align="center">通道</p></div>
   <div>
-    {%if session['61']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D001</label></div>
+    {%if session['61']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D001</label></div>
     {% elif session['61']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D001</label></div>
     {%endif%}
-    {%if session['62']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D002</label></div>
+    {%if session['62']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D002</label></div>
     {% elif session['62']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D002</label></div>
     {%endif%}
-    {%if session['63']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D003</label></div>
+    {%if session['63']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D003</label></div>
     {% elif session['63']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D003</label></div>
     {%endif%}
-    {%if session['64']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D004</label></div>
+    {%if session['64']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D004</label></div>
     {% elif session['64']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D004</label></div>
     {%endif%}
-    {%if session['65']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D005</label></div>
+    {%if session['65']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D005</label></div>
     {% elif session['65']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D005</label></div>
     {%endif%}
-    {%if session['66']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D006</label></div>
+    {%if session['66']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D006</label></div>
     {% elif session['66']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D006</label></div>
     {%endif%}
-    {%if session['67']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D007</label></div>
+    {%if session['67']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D007</label></div>
     {% elif session['67']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D007</label></div>
     {%endif%}
-    {%if session['68']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D008</label></div>
+    {%if session['68']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D008</label></div>
     {% elif session['68']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D008</label></div>
     {%endif%}
-    {%if session['69']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D009</label></div>
+    {%if session['69']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D009</label></div>
     {% elif session['69']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D009</label></div>
     {%endif%}
-    {%if session['70']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D010</label></div>
+    {%if session['70']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D010</label></div>
     {% elif session['70']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D010</label></div>
     {%endif%}
   </div>
   <div>
-    {%if session['71']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D011</label></div>
+    {%if session['71']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D011</label></div>
     {% elif session['71']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D011</label></div>
     {%endif%}
-    {%if session['72']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D012</label></div>
+    {%if session['72']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D012</label></div>
     {% elif session['72']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D012</label></div>
     {%endif%}
-    {%if session['73']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D013</label></div>
+    {%if session['73']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D013</label></div>
     {% elif session['73']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D013</label></div>
     {%endif%}
-    {%if session['74']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D014</label></div>
+    {%if session['74']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D014</label></div>
     {% elif session['74']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D014</label></div>
     {%endif%}
-    {%if session['75']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D015</label></div>
+    {%if session['75']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D015</label></div>
     {% elif session['75']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D015</label></div>
     {%endif%}
-    {%if session['76']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D016</label></div>
+    {%if session['76']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D016</label></div>
     {% elif session['76']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D016</label></div>
     {%endif%}
-    {%if session['77']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D017</label></div>
+    {%if session['77']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D017</label></div>
     {% elif session['77']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D017</label></div>
     {%endif%}
-    {%if session['78']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D018</label></div>
+    {%if session['78']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D018</label></div>
     {% elif session['78']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D018</label></div>
     {%endif%}
-    {%if session['79']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D019</label></div>
+    {%if session['79']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D019</label></div>
     {% elif session['79']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D019</label></div>
     {%endif%}
-    {%if session['80']==1 %}
-    <div class="back"><img src="../static/img/red.png"><label>D020</label></div>
+    {%if session['80']!=0 %}
+    <div class="back" title="进入时间：{{session['12']}}"><img src="../static/img/red.png"><label>D020</label></div>
     {% elif session['80']==0 %}
     <div class="back"><img src="../static/img/green.png"><label>D020</label></div>
     {%endif%}
