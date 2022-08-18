@@ -3,9 +3,10 @@ import os
 import time
 import random
 from bs4 import BeautifulSoup
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, Response
 import traceback
 import pymysql
+from camera_opencv import Camera
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -24,6 +25,7 @@ def uploader():
         f = request.files['file']
         file_path = "./static/img/upload/" + str(f.filename)
         clock = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+        employee_clock = time.strftime('%H:%M:%S', time.localtime())
         park_time = "--"
         # 把用户名和密码注册到数据库中
         # 连接数据库,此前在数据库中创建数据库
@@ -36,66 +38,101 @@ def uploader():
         sql2 = "insert into plate values ('" + str(f.filename) + "','" + str(clock) + "',null," + str(s) + ");"
         sql3 = "delete from plate where plate='" + str(f.filename) + "';"
         sql4 = "select * from plate where driveway=" + str(s) + ";"
-        sql5="select * from plate;"
+        sql5 = "select * from plate;"
+        sql6 = "select * from question where plate='" + str(f.filename) + "';"
+        sql7 = "select type from fast_pass where plate='" + str(f.filename) + "';"
+        sql8 = "select start_time ,end_time from employee where plate='" + str(f.filename) + "';"
         try:
             # 执行sql语句
             cursor.execute(sql1)
             results = cursor.fetchall()
+            cursor.execute(sql8)
+            employee_date = cursor.fetchall()
             if len(results) == 1:
                 in_time = datetime.datetime.strptime(results[0][0], '%Y-%m-%d %H:%M:%S')
-                out_time=datetime.datetime.strptime(clock, '%Y-%m-%d %H:%M:%S')
-                park_time=out_time-in_time
+                out_time = datetime.datetime.strptime(clock, '%Y-%m-%d %H:%M:%S')
+                park_time = out_time - in_time
                 fifteenmin = datetime.timedelta(minutes=15)
-                onehour=datetime.timedelta(hours=1)
-                if fifteenmin >= park_time :
-                    fee=0
-                elif fifteenmin< park_time<=onehour:
-                    fee=3
+                onehour = datetime.timedelta(hours=1)
+                if fifteenmin >= park_time:
+                    fee = 0
+                elif fifteenmin < park_time <= onehour:
+                    fee = 3
                 else:
-                    i=2
-                    while park_time>datetime.timedelta(hours=i):
-                        i=i+1
-                    fee=3*i
+                    i = 2
+                    while park_time > datetime.timedelta(hours=i):
+                        i = i + 1
+                    fee = 3 * i
+                if len(employee_date) != 0:
+                    end_time = datetime.datetime.strptime(employee_date[0][1], '%H:%M:%S')
+                    now_time = datetime.datetime.strptime(employee_clock, '%H:%M:%S')
+                    if (end_time - now_time) > datetime.timedelta(minutes=0):
+                        warn = "您离下班时间还有" + str(end_time - now_time)
+                        fee=0
+                else:
+                    warn = ""
                 cursor.execute(sql3)
                 db.commit()
-                if fee>20:
-                    fee=20
-                fee=str(fee)+'元'
-                return render_template("upload.html", time=clock, parking=park_time, file_path=file_path,fee=fee)
+                if fee > 20:
+                    fee = 20
+                fee = str(fee) + '元'
+                return render_template("upload.html", time=clock, parking=park_time, file_path=file_path, fee=fee,
+                                       warn=warn)
             else:
-                cursor.execute(sql5)
-                number = cursor.fetchall()
-                if len(number)<80:
-                    cursor.execute(sql4)
-                    results_num = cursor.fetchall()
-                    while len(results_num) == 1:
-                        s = random.randint(1, 80)
+                cursor.execute(sql6)
+                is_question = cursor.fetchall()
+                cursor.execute(sql7)
+                is_fast_pass = cursor.fetchall()
+                if len(is_question) == 1:
+                    warn = "警告：发现问题车辆！！！"
+                    return render_template("upload.html", time=clock, file_path=file_path, warn=warn)
+                elif len(is_fast_pass) == 1:
+                    if is_fast_pass[0][0] == "救护车":
+                        warn = "紧急情况，请救护车快速通过"
+                    else:
+                        warn = "紧急情况，请消防车快速通过"
+                    return render_template("upload.html", time=clock, file_path=file_path, warn=warn)
+                else:
+                    start_time = datetime.datetime.strptime(employee_date[0][0], '%H:%M:%S')
+                    now_time = datetime.datetime.strptime(employee_clock, '%H:%M:%S')
+                    if (now_time - start_time) > datetime.timedelta(minutes=0):
+                        warn = "您已迟到" + str(now_time - start_time)
+                    else:
+                        warn = ""
+                    cursor.execute(sql5)
+                    number = cursor.fetchall()
+                    if len(number) < 80:
                         cursor.execute(sql4)
                         results_num = cursor.fetchall()
-                    cursor.execute(sql2)
-                    db.commit()
-                    site = ''
-                    if (s - 1) // 20 == 0:
-                        site += 'A'
-                    elif (s - 1) // 20 == 1:
-                        site += 'B'
-                    elif (s - 1) // 20 == 2:
-                        site += 'C'
-                    elif (s - 1) // 20 == 3:
-                        site += 'D'
-                    elif (s - 1) // 20 == 4:
-                        site += 'E'
+                        while len(results_num) == 1:
+                            s = random.randint(1, 80)
+                            cursor.execute(sql4)
+                            results_num = cursor.fetchall()
+                        cursor.execute(sql2)
+                        db.commit()
+                        site = ''
+                        if (s - 1) // 20 == 0:
+                            site += 'A'
+                        elif (s - 1) // 20 == 1:
+                            site += 'B'
+                        elif (s - 1) // 20 == 2:
+                            site += 'C'
+                        elif (s - 1) // 20 == 3:
+                            site += 'D'
+                        elif (s - 1) // 20 == 4:
+                            site += 'E'
+                        else:
+                            site += 'F'
+                        j = (s - 1) % 20
+                        if (j + 1) // 10 == 0:
+                            site += '00' + str(j + 1)
+                        else:
+                            site += '0' + str(j + 1)
                     else:
-                        site += 'F'
-                    j = (s - 1) % 20
-                    if (j + 1) // 10 == 0:
-                        site += '00' + str(j + 1)
-                    else:
-                        site += '0' + str(j + 1)
-                else:
-                    site='车位已满'
+                        site = '车位已满'
 
-                return render_template("upload.html", time=clock, parking=park_time, file_path=file_path, site=site)
+                    return render_template("upload.html", time=clock, parking=park_time, file_path=file_path, site=site,
+                                           warn=warn)
         except:
             # 抛出错误信息
             traceback.print_exc()
@@ -516,8 +553,134 @@ def fee_rulespage():
 
 
 @app.route('/video')
-def videopage():
-    return render_template("video.html")
+def video():
+    clock = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+    employee_clock = time.strftime('%H:%M:%S', time.localtime())
+    park_time = "--"
+    # 把用户名和密码注册到数据库中
+    # 连接数据库,此前在数据库中创建数据库
+    db = pymysql.connect(host="localhost", user="root", password="qwertyjwt11", database="car_flask")
+    # 使用cursor()方法获取操作游标
+    cursor = db.cursor()
+    # SQL
+    s = random.randint(1, 80)
+    sql1 = "select in_time from plate where plate='catch.jpg';"
+    sql2 = "insert into plate values ('catch.jpg','" + str(clock) + "',null," + str(s) + ");"
+    sql3 = "delete from plate where plate='catch.jpg';"
+    sql4 = "select * from plate where driveway=" + str(s) + ";"
+    sql5 = "select * from plate;"
+    sql6 = "select * from question where plate='catch.jpg';"
+    sql7 = "select type from fast_pass where plate='catch.jpg';"
+    sql8 = "select start_time ,end_time from employee where plate='catch.jpg';"
+    try:
+        # 执行sql语句
+        cursor.execute(sql1)
+        results = cursor.fetchall()
+        cursor.execute(sql8)
+        employee_date = cursor.fetchall()
+        if len(results) == 1:
+            in_time = datetime.datetime.strptime(results[0][0], '%Y-%m-%d %H:%M:%S')
+            out_time = datetime.datetime.strptime(clock, '%Y-%m-%d %H:%M:%S')
+            park_time = out_time - in_time
+            fifteenmin = datetime.timedelta(minutes=15)
+            onehour = datetime.timedelta(hours=1)
+            if fifteenmin >= park_time:
+                fee = 0
+            elif fifteenmin < park_time <= onehour:
+                fee = 3
+            else:
+                i = 2
+                while park_time > datetime.timedelta(hours=i):
+                    i = i + 1
+                fee = 3 * i
+            if len(employee_date) != 0:
+                end_time = datetime.datetime.strptime(employee_date[0][1], '%H:%M:%S')
+                now_time = datetime.datetime.strptime(employee_clock, '%H:%M:%S')
+                if (end_time - now_time) > datetime.timedelta(minutes=0):
+                    warn = "您离下班时间还有" + str(end_time - now_time)
+                    fee = 0
+            else:
+                warn = ""
+            cursor.execute(sql3)
+            db.commit()
+            if fee > 20:
+                fee = 20
+            fee = str(fee) + '元'
+            return render_template("video.html", time=clock, parking=park_time, fee=fee,warn=warn)
+        else:
+            cursor.execute(sql6)
+            is_question = cursor.fetchall()
+            cursor.execute(sql7)
+            is_fast_pass = cursor.fetchall()
+            if len(is_question) == 1:
+                warn = "警告：发现问题车辆！！！"
+                return render_template("video.html", time=clock,  warn=warn)
+            elif len(is_fast_pass) == 1:
+                if is_fast_pass[0][0] == "救护车":
+                    warn = "紧急情况，请救护车快速通过"
+                else:
+                    warn = "紧急情况，请消防车快速通过"
+                return render_template("video.html", time=clock,warn=warn)
+            else:
+                start_time = datetime.datetime.strptime(employee_date[0][0], '%H:%M:%S')
+                now_time = datetime.datetime.strptime(employee_clock, '%H:%M:%S')
+                if (now_time - start_time) > datetime.timedelta(minutes=0):
+                    warn = "您已迟到" + str(now_time - start_time)
+                else:
+                    warn = ""
+                cursor.execute(sql5)
+                number = cursor.fetchall()
+                if len(number) < 80:
+                    cursor.execute(sql4)
+                    results_num = cursor.fetchall()
+                    while len(results_num) == 1:
+                        s = random.randint(1, 80)
+                        cursor.execute(sql4)
+                        results_num = cursor.fetchall()
+                    cursor.execute(sql2)
+                    db.commit()
+                    site = ''
+                    if (s - 1) // 20 == 0:
+                        site += 'A'
+                    elif (s - 1) // 20 == 1:
+                        site += 'B'
+                    elif (s - 1) // 20 == 2:
+                        site += 'C'
+                    elif (s - 1) // 20 == 3:
+                        site += 'D'
+                    elif (s - 1) // 20 == 4:
+                        site += 'E'
+                    else:
+                        site += 'F'
+                    j = (s - 1) % 20
+                    if (j + 1) // 10 == 0:
+                        site += '00' + str(j + 1)
+                    else:
+                        site += '0' + str(j + 1)
+                else:
+                    site = '车位已满'
+
+                return render_template("video.html", time=clock, parking=park_time, site=site,warn=warn)
+    except:
+        # 抛出错误信息
+        traceback.print_exc()
+        # 如果发生错误则回滚
+        db.rollback()
+        return '上传失败'
+    db.close
+
+
+def gen(camera):
+    """视频流生成"""
+    while True:
+        frame = camera.get_frame()
+        yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+
+@app.route('/video_feed')
+def video_feed():
+    """视频流的路线。将其放在img标记的src属性中。"""
+    return Response(gen(Camera()), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 if __name__ == "__main__":
