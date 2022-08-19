@@ -1,0 +1,33 @@
+{% extends 'common.html'%}
+{% block title %}车牌识别-用户登录 {% endblock %}
+{% block container %}
+<div class="row mt-4">
+  <div class="col"></div>
+  <div class="col">
+    <form action="/loginProcess" method="post">
+      <div class="auto-in">
+        <h3>用户登录界面</h3>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail2">邮箱地址</label>
+        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp"
+               name="exampleInputEmail2">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName2">用户名</label>
+        <input type="text" class="form-control" id="exampleInputName2" name="exampleInputName2">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword3">密码</label>
+        <input type="password" class="form-control" id="exampleInputPassword3" name="exampleInputPassword3">
+      </div>
+      <button type="submit" class="btn btn-primary">登录</button>
+    </form>
+  </div>
+  <div class="col"></div>
+</div>
+
+{% endblock %}
+
+
+

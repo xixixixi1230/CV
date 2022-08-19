@@ -1,0 +1,43 @@
+{% extends 'common.html'%}
+{% block title %}车牌识别-识别车牌 {% endblock %}
+{% block container %}
+<style>
+    .test {
+        width: 1200px;
+        height: 500px;
+        margin: 20px auto;
+        display: flex;
+    }
+
+    .testIMG {
+        display: flex;
+        margin-top: 0;
+        margin-left: 145px;
+        width: 650px;
+        height: 500px;
+        background-size: 100%;
+        background: url(../static/img/upload/wait.png);
+    }
+</style>
+<div class="test">
+  <div class="testIMG">
+    <img id="show_img" src={{file_path}} style="width: 100%;min-height: 100%;">
+  </div>
+  <div style="background-color: lightgray; width: 250px">
+    <h4>检测结果:</h4>
+    <p>当前时间：</p>
+    <span id="clock">{{time}}</span>
+    <p>车牌号：{{plate}}</p>
+    <p>停车时间：{{parking}}</p>
+    <p>停车位置：{{site}}</p>
+    <p>停车费：{{fee}}</p>
+    <h3 style="color:red;">{{warn}}</h3>
+  </div>
+</div>
+<div style=" margin-left: 200px;">
+  <form action="/uploader" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" id="fileField"/>
+    <input type="submit" value="提交"/>
+  </form>
+</div>
+{% endblock %}

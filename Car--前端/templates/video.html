@@ -1,0 +1,40 @@
+{% extends 'common.html'%}
+{% block title %}车牌识别-视频识别 {% endblock %}
+{% block container %}
+<style>
+    .test {
+        width: 1200px;
+        height: 500px;
+        margin: 20px auto;
+        display: flex;
+    }
+
+    .testIMG {
+        display: flex;
+        margin-top: 0;
+        margin-left: 145px;
+        width: 650px;
+        height: 500px;
+        background-size: 100%;
+        background: url(../static/img/upload/wait.png);
+    }
+</style>
+<div class="test">
+  <div class="testIMG">
+    <img src="{{ url_for('video_feed') }}">
+  </div>
+  <div style="background-color: lightgray; width: 250px">
+    <h4>检测结果:</h4>
+    <span id="clock"></span>
+    <p>当前时间：{{time}}</p>
+    <p>车牌号：{{plate}}</p>
+    <p>停车时间: {{parking}}</p>
+    <p>停车位置：{{site}}</p>
+    <p>停车费：{{fee}}</p>
+    <h3 style="color:red;">{{warn}}</h3>
+  </div>
+</div>
+<form action="/video_upload" method="post">
+  <button type="submit" class="btn btn-primary">检测</button>
+</form>
+{% endblock %}
