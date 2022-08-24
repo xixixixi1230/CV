@@ -1,0 +1,154 @@
+{% extends 'common.html'%}
+
+{% block title %}
+车牌识别
+{% endblock %}
+{% block container %}
+<style>
+    .divcontainer {
+        width: 900px;
+        margin: 100px auto;
+        display: flex;
+        display: -webkit-flex; /* Safari */
+    }
+
+    .test {
+        width: 900px;
+        height: 400px;
+        margin: 10px auto;
+        display: flex;
+    }
+
+    #img {
+        width: 750px;
+        height: 400px;
+        margin: 0 auto;
+        padding: 0px;
+        border: 1px solid black;
+        /* 设置相对位置，只有将外层元素设置相对位置，子元素设置绝对位置，才能将子元素放置在父元素内部的特定位置 */
+        position: relative;
+        overflow: hidden;
+    }
+
+    #imgs {
+        width: 100%;
+        min-height: 100%;
+    }
+
+    #img > .lleft {
+
+        width: 23px;
+        height: 40px;
+        /* 设置子元素绝对位置 */
+        position: absolute;
+        left: 0px;
+        top: 48%;
+    }
+
+    #img > .rright {
+        width: 55px;
+        height: 40px;
+        position: absolute;
+        right: 0px;
+        top: 48%;
+    }
+</style>
+<div class="jumbotron" style="background:url(../static/img/background.gif);height: 650px;text-align: center;background-size:100% 100%;">
+  <br><br><br>
+  <h1 class="display-4" style="color:white">六神无组商场地下停车场</h1>
+  <h1 class="display-4" style="color:white;font-size: 100px;">车牌识别</h1>
+  <h4 class="lead" style="color:white">识别中国大陆各类机动车车牌信息，支持蓝牌、绿牌。</h4>
+  <br><br>
+  <p style="color:white">此车牌识别功能应用于六神无组商场地下停车场，用以完成计费等功能。</p>
+  {%if session.get("username")!=None %}
+  <a class="btn btn-primary btn-lg" href="/upload" role="button">立即使用</a>
+  {% else %}
+  <a class="btn btn-primary btn-lg" href="/login" role="button">立即使用</a>
+  {% endif %}
+</div>
+<!-- 简介 -->
+<div class="introduction-container d-f j-c" id="introduction">
+  <div class="introduction d-f f-d a-c">
+    <div>
+      <h3 align="center">简介</h3>
+      <h5 align="center">About Us</h5>
+    </div>
+    <div class="divcontainer">
+      <div>
+        <img src="./static/img/photo.png" width="100%"/>
+        <p align="center">识别照片中的车牌</p>
+      </div>
+      <div>
+        <img src="./static/img/video.png" width="100%"/>
+        <p align="center">识别视频中的车牌</p>
+        <p align="center">记录时间、计算停车费</p>
+      </div>
+      <div>
+        <img src="./static/img/home.png" width="100%"/>
+        <p align="center">通过车牌识别出地域</p>
+      </div>
+    </div>
+    <div class="divcontainer">
+      <div>
+        <img src="./static/img/question.png" width="100%"/>
+        <p align="center">通过车牌识别问题车辆</p>
+      </div>
+      <div>
+        <img src="./static/img/ambulance.png" width="100%"/>
+        <p align="center">通过车牌识别消防车、</p>
+        <p align="center">救护车（不进行阻拦）</p>
+      </div>
+      <div>
+        <img src="./static/img/late.png" width="100%"/>
+        <p align="center">通过车牌判断员工迟到早退</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 功能演示 -->
+<div class="culture-container d-f j-c" id="culture">
+  <div class="culture d-f f-d a-c">
+    <div><h3 align="center">功能演示</h3></div>
+  </div>
+</div>
+<div class="test">
+  <div id="img">
+    <div>
+      <img id="imgs" src="./static/img/img1.png" alt="无法显示">
+    </div>
+    <div class="lleft">
+      <img src="./static/img/l1.png" alt="无法显示">
+    </div>
+    <div class="rright">
+      <img src="./static/img/r1.png" alt="无法显示">
+    </div>
+  </div>
+  <div>
+    <h4>检测结果:</h4>
+    <p id="result">京KBT355</p>
+  </div>
+</div>
+<script>
+    var index = 0;
+    var img_data = ['./static/img/img1.png', './static/img/img2.jpg', './static/img/img3.png', './static/img/img4.png']
+    var result_data = ["京KBT355", "京Q8MG78", "蒙JTT419", "京Q99TL9"]
+    // 获得相应元素对象
+    var rright = document.getElementsByClassName("rright")[0];
+    var llef = document.getElementsByClassName("lleft")[0];
+    var img = document.getElementById("imgs");
+    var rlt = document.getElementById("result");
+    // 通过对象的单击事件触动函数调用函数实现图片切换
+    rright.onclick = function () {
+        index++;
+        if (index == img_data.length) index = 0;
+        img.setAttribute('src', img_data[index]);
+        rlt.innerHTML = result_data[index];
+    }
+    llef.onclick = function () {
+        if (index == 0) index = img_data.length;
+        index--;
+        img.setAttribute('src', img_data[index]);
+        rlt.innerHTML = result_data[index];
+    }
+</script>
+{% endblock %}
